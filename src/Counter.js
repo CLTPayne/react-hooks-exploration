@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function useCounter({initialState, step}) {
   const [count, setCount] = useState(initialState);
@@ -8,7 +8,11 @@ function useCounter({initialState, step}) {
 }
 
 export default function Counter() {
-  const {count, increment, decrement} = useCounter({initialState: 0, step: 1})
+  const initialCount = Number(window.localStorage.getItem('count') || 0)
+  const {count, increment, decrement} = useCounter({initialState: initialCount, step: 1})
+  useEffect(() => {
+    window.localStorage.setItem('count', count)
+  })
   return (
     <span className="controls">
       <button onClick={increment}>Up</button>
