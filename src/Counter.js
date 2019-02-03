@@ -7,7 +7,7 @@ export default function Counter() {
   return (
     <span className="controls">
       <button onClick={increment}>Up</button>
-        {count}
+        <div data-testid="count">{count}</div>
       <button onClick={decrement}>Down</button>
     </span>
   )
