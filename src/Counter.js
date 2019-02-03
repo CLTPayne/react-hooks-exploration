@@ -8,11 +8,11 @@ function useCounter({initialState, step}) {
 }
 
 export default function Counter() {
-  const initialCount = Number(window.localStorage.getItem('count') || 0)
+  const initialCount = () => Number(window.localStorage.getItem('count') || 0)
   const {count, increment, decrement} = useCounter({initialState: initialCount, step: 1})
   useEffect(() => {
     window.localStorage.setItem('count', count)
-  })
+  }, [count])
   return (
     <span className="controls">
       <button onClick={increment}>Up</button>
