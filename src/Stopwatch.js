@@ -57,6 +57,11 @@ export default function Stopwatch() {
         Clear
       </button>
       <hr />
+      <strong>Lapse Difference:</strong>
+      <span>
+        {stopwatchOne.lapse - stopwatchTwo.lapse}
+        ms
+      </span>
       <hr />
       <label
         style={{
