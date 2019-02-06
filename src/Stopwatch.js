@@ -46,11 +46,11 @@ export default function Stopwatch() {
           fontSize: '5em',
           display: 'block',
         }}
-      >
+        data-testid="lapse-one">
         {stopwatchOne.lapse}
         ms
       </label>
-      <button onClick={stopwatchOne.handleRunClick} style={buttonStyles}>
+      <button onClick={stopwatchOne.handleRunClick} style={buttonStyles} data-testid="start-one">
         {stopwatchOne.running ? 'Stop' : 'Start'}
       </button>
       <button onClick={stopwatchOne.handleClearClick} style={buttonStyles}>
@@ -68,6 +68,7 @@ export default function Stopwatch() {
           fontSize: '5em',
           display: 'block',
         }}
+      data-testid="lapse-two"
       >
         {stopwatchTwo.lapse}
         ms
