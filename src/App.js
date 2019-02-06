@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import Stopwatch from './Stopwatch';
+import Form from './Form';
 
 class App extends Component {
   render() {
     return (
       <div>
         <header className="hooks">
-          <h1>Stopwatch with hooks</h1>
+          <h1>Form with hooks and memo</h1>
         </header>
-        <div className="stopwatch">
-          <Stopwatch />
+        <div className="form">
+          <Form />
         </div>
       </div>
     );
