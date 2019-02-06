@@ -4,7 +4,7 @@ function reducer(currentState, newState) {
   return {...currentState, ...newState}
 }
 
-export default function Stopwatch() {
+function useStopwatch() {
   const [{running, lapse}, setState] = useReducer(reducer, {
     running: false,
     lapse: 0,
@@ -32,6 +32,13 @@ export default function Stopwatch() {
     setState({lapse: 0, running: false});
   }
 
+  return { handleRunClick, handleClearClick, lapse, running}
+}
+
+export default function Stopwatch() {
+  const stopwatchOne = useStopwatch();
+  const stopwatchTwo = useStopwatch();
+
   return (
     <div style={{textAlign: 'center'}}>
       <label
@@ -40,11 +47,32 @@ export default function Stopwatch() {
           display: 'block',
         }}
       >
-        {lapse}
+        {stopwatchOne.lapse}
         ms
       </label>
-      <button onClick={handleRunClick} style={buttonStyles}>{running ? 'Stop' : 'Start'}</button>
-      <button onClick={handleClearClick} style={buttonStyles}>Clear</button>
+      <button onClick={stopwatchOne.handleRunClick} style={buttonStyles}>
+        {stopwatchOne.running ? 'Stop' : 'Start'}
+      </button>
+      <button onClick={stopwatchOne.handleClearClick} style={buttonStyles}>
+        Clear
+      </button>
+      <hr />
+      <hr />
+      <label
+        style={{
+          fontSize: '5em',
+          display: 'block',
+        }}
+      >
+        {stopwatchTwo.lapse}
+        ms
+      </label>
+      <button onClick={stopwatchTwo.handleRunClick} style={buttonStyles}>
+        {stopwatchTwo.running ? 'Stop' : 'Start'}
+      </button>
+      <button onClick={stopwatchTwo.handleClearClick} style={buttonStyles}>
+        Clear
+      </button>
     </div>
   )
 };
